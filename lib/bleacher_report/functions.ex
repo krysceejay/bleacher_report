@@ -13,4 +13,12 @@ defmodule BleacherReport.Function do
     a_struct = Map.merge(a_struct, processed_map)
     a_struct
   end
+
+  def rand_string(length) do
+    length
+    |> :crypto.strong_rand_bytes
+    |> Base.encode64
+    |> String.downcase
+  end
+  
 end

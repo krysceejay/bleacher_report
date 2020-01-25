@@ -26,6 +26,11 @@ defmodule BleacherReportWeb.Router do
     get "/users", UserController, :index
     get "/user/:id", UserController, :show
     post "/createuser", UserController, :create_user
+
+    get "/contents", ContentController, :index
+    get "/content/:id", UserController, :show
+    post "/createcontent", ContentController, :create_content
+
     get "/reactions", ReactionController, :reactions
     post "/reaction", ReactionController, :reaction
     get "/reaction_counts/:content_id", ReactionController, :reactioncounts
