@@ -13,14 +13,19 @@ defmodule BleacherReportWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", BleacherReportWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
+  # scope "/", BleacherReportWeb do
+  #   pipe_through :browser
+  #
+  #   get "/", PageController, :index
+  # end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BleacherReportWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BleacherReportWeb do
+    pipe_through :api
+
+    get "/users", UserController, :index
+    get "/user/:id", UserController, :show
+    post "/reaction", UserController, :reaction
+    get "/reaction_counts/:content_id", UserController, :reactioncounts
+  end
 end
