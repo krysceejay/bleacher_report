@@ -11,6 +11,12 @@ defmodule BleacherReportWeb.UserController do
     render(conn, "index.json", users: users)
   end
 
+  def create_user(conn, user_params) do
+    attr = Map.merge(user_params, %{id: "jhgfdsfgchvjbnjhjvgcf"})
+    user = Accounts.create_user(attr)
+    render(conn, "create.json", user: user)
+  end
+
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user_by(id)
     render(conn, "show.json", user: user)

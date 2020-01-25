@@ -10,8 +10,14 @@ defmodule BleacherReportWeb.UserView do
     %{data: render_one(user, UserView, "user.json")}
   end
 
+  def render("create.json", %{user: user}) do
+    %{message: "User added succefully", data: render_one(user, UserView, "user.json")}
+  end
+
   def render("user.json", %{user: user}) do
-    %{id: user.id,
-      name: user.name}
+    %{
+      id: user.id,
+      name: user.name
+    }
   end
 end

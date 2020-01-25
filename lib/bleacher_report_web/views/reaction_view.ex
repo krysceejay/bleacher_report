@@ -3,14 +3,14 @@ defmodule BleacherReportWeb.ReactionView do
   alias BleacherReportWeb.ReactionView
 
   def render("index.json", %{reactions: reactions}) do
-    %{data: render_many(reactions, ReactionView, "user.json")}
+    %{data: render_many(reactions, ReactionView, "reaction.json")}
   end
 
   def render("show.json", %{reaction: reaction}) do
-    %{message: "successful", data: render_one(reaction, ReactionView, "user.json")}
+    %{message: "successful", data: render_one(reaction, ReactionView, "reaction.json")}
   end
 
-  def render("user.json", %{reaction: reaction}) do
+  def render("reaction.json", %{reaction: reaction}) do
     %{
       id: reaction.id,
       action: reaction.action,

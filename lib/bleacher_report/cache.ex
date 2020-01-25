@@ -6,7 +6,7 @@ defmodule BleacherReport.Cache do
   end
 
   def init(state) do
-    :ets.new(:reaction_cache, [:set, :public, :named_table])
+    :ets.new(:app_cache, [:set, :public, :named_table])
     {:ok, state}
   end
 
@@ -23,21 +23,21 @@ defmodule BleacherReport.Cache do
   end
 
   def handle_cast({:delete, key}, state) do
-    :ets.delete(:reaction_cache, key)
+    :ets.delete(:app_cache, key)
     {:noreply, state}
   end
 
   def handle_call({:get, key}, _from, state) do
-    reaction = 
-      case :ets.lookup(:reaction_cache, key) do
+    data = 
+      case :ets.lookup(:app_cache, key) do
         [] -> []
-        [{_key, reaction}] -> reaction
+        [{_key, data}] -> data
       end
-    {:reply, reaction, state}
+    {:reply, data, state}
   end
 
   def handle_cast({:put, key, data}, state) do
-    :ets.insert(:reaction_cache, {key, data})
+    :ets.insert(:app_cache, {key, data})
     {:noreply, state}
   end
 
