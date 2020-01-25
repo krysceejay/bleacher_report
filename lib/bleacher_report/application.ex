@@ -9,9 +9,10 @@ defmodule BleacherReport.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      BleacherReportWeb.Endpoint
+      BleacherReportWeb.Endpoint,
       # Starts a worker by calling: BleacherReport.Worker.start_link(arg)
       # {BleacherReport.Worker, arg},
+      BleacherReport.Cache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

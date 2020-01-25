@@ -1,21 +1,17 @@
 defmodule BleacherReport.Reports do
 
+  import Plug.Conn
   alias BleacherReport.Reports.Reaction
   alias BleacherReport.Data
-
-  def main(attrs \\ %{}) do
-    [
-
-    ]
-  end
-
-  def get_reactions(conn) do
-    conn.assign.reaction
-  end
+  alias BleacherReport.Cache
 
   def create_reaction(attrs \\ %{}) do
+    newattrs = get_reactions() ++ [attrs]
+    Cache.put(:reaction, newattrs)
+  end
 
-    get_reactions(conn) ++ attrs
+  def get_reactions do
+    Cache.get(:reaction)
   end
 
 end

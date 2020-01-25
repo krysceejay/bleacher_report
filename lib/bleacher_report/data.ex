@@ -40,8 +40,4 @@ defmodule BleacherReport.Data do
     ]
   end
 
-  def reactions do
-    []
-  end
-
 end
