@@ -37,7 +37,7 @@ defmodule BleacherReportWeb.UserController do
       type: type,
       action: action,
       reaction_type: reaction_type
-      } 
+      }
     IO.puts "+++++++++++++++++"
     IO.inspect Reports.create_reaction(mystr)
     IO.puts "+++++++++++++++++"
