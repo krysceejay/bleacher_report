@@ -16,21 +16,20 @@ end
   end
 
   def reactioncounts(conn, %{"content_id" => id}) do
-    
-    case Reports.get_reaction_by(id) do
-      nil -> 
+    case Reports.get_fire_reaction(id) do
+      nil ->
         conn
         |> put_status(:not_found)
         |> put_view(BleacherReportWeb.ErrorView)
         |> render(:"404")
-        _ -> 
+        _ ->
           reaction = %{
-          count: Reports.get_reaction_by(id) |> Enum.count,
+          count: %{fire: Reports.get_fire_reaction(id) |> Enum.count},
           content_id: id
         }
         render(conn, "count.json", reaction: reaction)
-    end 
-    
+    end
+
   end
 
 end

@@ -6,7 +6,13 @@ defmodule BleacherReport.Reports do
 
   def create_reaction(attrs \\ %{}) do
     reaction_struct = Function.get_struct_from_map(attrs, as: %Reaction{})
-    newattrs = get_reactions() ++ [reaction_struct]
+
+    new_reactions = Enum.reject(get_reactions(),
+    fn %Reaction{content_id: content_id, user_id: user_id}
+      -> content_id == reaction_struct.content_id && user_id == reaction_struct.user_id
+    end)
+
+    newattrs = new_reactions ++ [reaction_struct]
     Cache.put(:reaction, newattrs)
 
     reaction_struct
@@ -21,7 +27,18 @@ defmodule BleacherReport.Reports do
        nil -> nil
         _ -> Enum.filter(get_reactions(), fn %Reaction{content_id: id} -> id == content_id end)
     end
-    
+
+  end
+
+  def get_fire_reaction(content_id) do
+    case get_content_by(content_id) do
+       nil -> nil
+        _ -> Enum.filter(get_reactions(),
+        fn %Reaction{content_id: id, action: action, reaction_type: reaction_type}
+          -> id == content_id && action == "add" && reaction_type == "fire"
+        end)
+    end
+
   end
 
   def get_contents do
