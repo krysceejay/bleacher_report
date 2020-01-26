@@ -11,8 +11,25 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## Learn more
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+  A Phoenix base microservice using ETS(Erlang Term Storage) as an in-memory cache.
+
+  To create a user
+  POST to http://localhost:4000/createuser
+  Parameters: name (string)
+
+  View all users
+  GET to http://localhost:4000/users
+
+  Create content
+  POST to http://localhost:4000/createcontent
+  Parameters: user_id (string), title (string), body (string)
+
+  View all contents
+  GET to http://localhost:4000/contents
+
+  Create reactions
+  POST to http://localhost:4000/reaction
+  Parameters: action (string), content_id (string), reaction_type (string), type (string), user_id (string)
+
+  View all add fire reaction counts
+  GET to http://localhost:4000/reaction_counts/:content_id
