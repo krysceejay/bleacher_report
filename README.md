@@ -31,5 +31,5 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   POST to http://localhost:4000/reaction
   Parameters: action (string), content_id (string), reaction_type (string), type (string), user_id (string)
 
-  View all add fire reaction counts
+  View add fire reaction counts
   GET to http://localhost:4000/reaction_counts/:content_id
