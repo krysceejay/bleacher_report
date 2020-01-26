@@ -16,8 +16,20 @@ defmodule BleacherReport.Reports do
     Cache.get(:reaction)
   end
 
+  def get_reaction_by(content_id) do
+    case get_content_by(content_id) do
+       nil -> nil
+        _ -> Enum.filter(get_reactions(), fn %Reaction{content_id: id} -> id == content_id end)
+    end
+    
+  end
+
   def get_contents do
     Cache.get(:content)
+  end
+
+  def get_content_by(content_id) do
+    Enum.find(get_contents(), fn %Content{id: id} -> id == content_id end)
   end
 
   def create_content(attrs \\ %{}) do

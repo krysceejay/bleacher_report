@@ -2,7 +2,7 @@ defmodule BleacherReportWeb.Router do
   use BleacherReportWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html json"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
@@ -28,7 +28,7 @@ defmodule BleacherReportWeb.Router do
     post "/createuser", UserController, :create_user
 
     get "/contents", ContentController, :index
-    get "/content/:id", UserController, :show
+    get "/content/:id", ContentController, :show
     post "/createcontent", ContentController, :create_content
 
     get "/reactions", ReactionController, :reactions

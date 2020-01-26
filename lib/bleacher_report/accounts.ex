@@ -7,10 +7,8 @@ defmodule BleacherReport.Accounts do
     Cache.get(:users)
   end
 
-  def get_user!(id), do: nil
-
   def get_user_by(userid) do
-    Enum.find(Data.users(), fn %User{id: id} -> id == userid end)
+    Enum.find(list_users, fn %User{id: id} -> id == userid end)
   end
 
   def create_user(attrs \\ %{}) do

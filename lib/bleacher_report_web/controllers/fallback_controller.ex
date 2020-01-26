@@ -6,12 +6,12 @@ defmodule BleacherReportWeb.FallbackController do
   """
   use BleacherReportWeb, :controller
 
-  def call(conn, {:error, reason}) do
-    conn
-    |> put_status(:unprocessable_entity)
-    |> put_view(BleacherReportWeb.ChangesetView)
-    |> render("error.json", reason: reason)
-  end
+  # def call(conn, {:error, reason}) do
+  #   conn
+  #   |> put_status(:unprocessable_entity)
+  #   |> put_view(BleacherReportWeb.ChangesetView)
+  #   |> render("error.json", reason: reason)
+  # end
 
   def call(conn, {:error, :not_found}) do
     conn

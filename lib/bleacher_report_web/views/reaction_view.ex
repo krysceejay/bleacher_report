@@ -10,6 +10,13 @@ defmodule BleacherReportWeb.ReactionView do
     %{message: "successful", data: render_one(reaction, ReactionView, "reaction.json")}
   end
 
+  def render("count.json", %{reaction: reaction}) do
+    %{data: %{
+      reaction_count: reaction.count,
+      content_id: reaction.content_id
+    }}
+  end
+
   def render("reaction.json", %{reaction: reaction}) do
     %{
       id: reaction.id,
@@ -20,4 +27,7 @@ defmodule BleacherReportWeb.ReactionView do
       type: reaction.type
     }
   end
+
+  
+
 end
