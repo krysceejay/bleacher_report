@@ -1,6 +1,5 @@
 defmodule BleacherReport.Accounts do
   alias BleacherReport.Accounts.User
-  alias BleacherReport.Data
   alias BleacherReport.{Cache, Function}
 
   def list_users do
@@ -19,5 +18,5 @@ defmodule BleacherReport.Accounts do
     user_struct
   end
 
-  
+
 end

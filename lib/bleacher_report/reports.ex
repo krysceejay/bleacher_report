@@ -1,7 +1,6 @@
 defmodule BleacherReport.Reports do
 
-  alias BleacherReport.Reports.Reaction
-  alias BleacherReport.Reports.Content
+  alias BleacherReport.Reports.{Reaction,Content}
   alias BleacherReport.{Cache, Function}
 
   def create_reaction(attrs \\ %{}) do
